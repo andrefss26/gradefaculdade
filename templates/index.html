@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GradeEscolar — Gestão de Horários</title>
+<link rel="stylesheet" href="/static/css/style.css">
+<style>
+  .modal-overlay { display: none; opacity: 0; transition: opacity .2s; }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ── Header ── -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo-mark">📅</div>
+      <div>
+        <div class="logo-text">GradeEscolar</div>
+        <div class="logo-sub">Gestão de Horários Escolares</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="user-badge">
+        <div class="user-avatar" id="user-initial">A</div>
+        <span id="user-name">Usuário</span>
+        <small style="color:#aaa">·</small>
+        <span id="user-perfil" style="font-size:11px;color:#888">adm</span>
+      </div>
+      <button class="btn-logout" onclick="logout()">Sair</button>
+    </div>
+  </header>
+
+  <!-- ── Sidebar ── -->
+  <nav class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Principal</div>
+      <a class="nav-item active" data-page="dashboard" onclick="navTo('dashboard')">
+        <span class="nav-icon">🏠</span> Dashboard
+      </a>
+      <a class="nav-item" data-page="grade" onclick="navTo('grade')">
+        <span class="nav-icon">📅</span> Grade Horária
+      </a>
+      <a class="nav-item" data-page="aulas" onclick="navTo('aulas')">
+        <span class="nav-icon">📋</span> Lista de Aulas
+      </a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Cadastros</div>
+      <a class="nav-item" data-page="professores" onclick="navTo('professores')">
+        <span class="nav-icon">👨‍🏫</span> Professores
+      </a>
+      <a class="nav-item" data-page="disciplinas" onclick="navTo('disciplinas')">
+        <span class="nav-icon">📚</span> Disciplinas
+      </a>
+      <a class="nav-item" data-page="turmas" onclick="navTo('turmas')">
+        <span class="nav-icon">🏫</span> Turmas
+      </a>
+      <a class="nav-item" data-page="salas" onclick="navTo('salas')">
+        <span class="nav-icon">🚪</span> Salas
+      </a>
+      <a class="nav-item" data-page="horarios" onclick="navTo('horarios')">
+        <span class="nav-icon">🕐</span> Horários Inst.
+      </a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Conta</div>
+      <a class="nav-item" data-page="senha" onclick="navTo('senha')">
+        <span class="nav-icon">🔒</span> Alterar Senha
+      </a>
+    </div>
+  </nav>
+
+  <!-- ── Main ── -->
+  <main class="main">
+
+    <!-- DASHBOARD -->
+    <div class="page active" id="dashboard">
+      <div class="page-title">Dashboard</div>
+      <div class="page-sub">Visão geral do sistema de horários</div>
+      <div class="stats-grid">
+        <div class="stat-card blue">
+          <div class="stat-icon">👨‍🏫</div>
+          <div class="stat-label">Professores</div>
+          <div class="stat-value" id="stat-profs">—</div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-icon">🏫</div>
+          <div class="stat-label">Turmas</div>
+          <div class="stat-value" id="stat-turmas">—</div>
+        </div>
+        <div class="stat-card orange">
+          <div class="stat-icon">📚</div>
+          <div class="stat-label">Disciplinas</div>
+          <div class="stat-value" id="stat-discs">—</div>
+        </div>
+        <div class="stat-card purple">
+          <div class="stat-icon">🚪</div>
+          <div class="stat-label">Salas</div>
+          <div class="stat-value" id="stat-salas">—</div>
+        </div>
+        <div class="stat-card teal">
+          <div class="stat-icon">📋</div>
+          <div class="stat-label">Aulas Alocadas</div>
+          <div class="stat-value" id="stat-aulas">—</div>
+        </div>
+        <div class="stat-card red">
+          <div class="stat-icon">👩‍🎓</div>
+          <div class="stat-label">Total de Alunos</div>
+          <div class="stat-value" id="stat-alunos">—</div>
+        </div>
+      </div>
+      <div class="section-box">
+        <div class="section-head">
+          <h2>🚀 Início Rápido</h2>
+        </div>
+        <div class="section-body">
+          <p style="color:#555;margin-bottom:16px">Para montar a grade horária, siga a sequência:</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px">
+            <div onclick="navTo('professores')" style="cursor:pointer;padding:16px;border-radius:10px;background:#F0F5FF;border:1.5px solid #D0E0FF;text-align:center">
+              <div style="font-size:26px;margin-bottom:6px">👨‍🏫</div>
+              <div style="font-weight:700;color:#1B3F7A;font-size:13px">1. Professores</div>
+            </div>
+            <div onclick="navTo('disciplinas')" style="cursor:pointer;padding:16px;border-radius:10px;background:#F0FFF5;border:1.5px solid #C0EAD0;text-align:center">
+              <div style="font-size:26px;margin-bottom:6px">📚</div>
+              <div style="font-weight:700;color:#1A6B3C;font-size:13px">2. Disciplinas</div>
+            </div>
+            <div onclick="navTo('turmas')" style="cursor:pointer;padding:16px;border-radius:10px;background:#FFF8F0;border:1.5px solid #FFD9A0;text-align:center">
+              <div style="font-size:26px;margin-bottom:6px">🏫</div>
+              <div style="font-weight:700;color:#C96A00;font-size:13px">3. Turmas</div>
+            </div>
+            <div onclick="navTo('salas')" style="cursor:pointer;padding:16px;border-radius:10px;background:#F8F0FF;border:1.5px solid #DDB8FF;text-align:center">
+              <div style="font-size:26px;margin-bottom:6px">🚪</div>
+              <div style="font-weight:700;color:#6A1B9A;font-size:13px">4. Salas</div>
+            </div>
+            <div onclick="navTo('grade')" style="cursor:pointer;padding:16px;border-radius:10px;background:#E8F4FF;border:1.5px solid #A0CCFF;text-align:center">
+              <div style="font-size:26px;margin-bottom:6px">📅</div>
+              <div style="font-weight:700;color:#1B3F7A;font-size:13px">5. Montar Grade</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRADE -->
+    <div class="page" id="grade">
+      <div class="page-title">Grade Horária</div>
+      <div class="page-sub">Visualize e gerencie a grade semanal. Clique em + para adicionar uma aula.</div>
+      <div class="section-box">
+        <div class="section-head">
+          <h2>Filtros e Exportação</h2>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-success btn-sm" onclick="exportGrade('turma')">⬇️ CSV por Turma</button>
+            <button class="btn btn-outline btn-sm" onclick="exportGrade('professor')">⬇️ CSV por Prof.</button>
+          </div>
+        </div>
+        <div class="section-body" style="padding-bottom:12px">
+          <div class="grade-filters">
+            <select id="grade-turno" onchange="renderGrade()">
+              <option value="todos">Todos os Turnos</option>
+              <option value="Manha">Manhã</option>
+              <option value="Noite">Noite</option>
+            </select>
+            <select id="grade-turma-filter" onchange="renderGrade()">
+              <option value="">Todas as Turmas</option>
+            </select>
+            <select id="grade-prof-filter" onchange="renderGrade()">
+              <option value="">Todos os Professores</option>
+            </select>
+            <button class="btn btn-primary btn-sm" onclick="openNewAulaModal('','')">＋ Nova Aula</button>
+          </div>
+        </div>
+      </div>
+      <div class="section-box">
+        <div class="section-body" style="padding:12px">
+          <div id="grade-container">
+            <div class="empty-state"><div class="es-icon">📅</div><p>Carregando grade...</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LISTA DE AULAS -->
+    <div class="page" id="aulas">
+      <div class="page-title">Lista de Aulas</div>
+      <div class="page-sub">Todas as aulas alocadas na grade atual.</div>
+      <div class="section-box">
+        <div class="section-head">
+          <h2>Aulas Cadastradas</h2>
+          <button class="btn btn-primary btn-sm" onclick="navTo('grade')">📅 Ir para Grade</button>
+        </div>
+        <div class="section-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr>
+                <th>ID</th><th>Turma</th><th>Disciplina</th><th>Professor</th>
+                <th>Sala</th><th>Dia</th><th>Horário</th><th>Turno</th><th>Ações</th>
+              </tr></thead>
+              <tbody id="tb-aulas"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROFESSORES -->
+    <div class="page" id="professores">
+      <div class="page-title">Professores</div>
+      <div class="page-sub">Cadastro e gerenciamento de professores.</div>
+      <div class="section-box">
+        <div class="section-head">
+          <h2>Lista de Professores</h2>
+          <button class="btn btn-primary btn-sm" onclick="openNewProf()">＋ Novo Professor</button>
+        </div>
+        <div class="section-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>ID</th><th>Nome</th><th>E-mail</th><th>Dias Disponíveis</th><th>Máx. Aulas/Dia</th><th>Ações</th></tr></thead>
+              <tbody id="tb-professores"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DISCIPLINAS -->
+    <div class="page" id="disciplinas">
+      <div class="page-title">Disciplinas</div>
+      <div class="page-sub">Cadastro de disciplinas e vínculo com professores.</div>
+      <div class="section-box">
+        <div class="section-head">
+          <h2>Lista de Disciplinas</h2>
+          <button class="btn btn-primary btn-sm" onclick="openNewDisc()">＋ Nova Disciplina</button>
+        </div>
+        <div class="section-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>ID</th><th>Nome</th><th>Carga Horária</th><th>Professor Responsável</th><th>Ações</th></tr></thead>
+              <tbody id="tb-disciplinas"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TURMAS -->
+    <div class="page" id="turmas">
+      <div class="page-title">Turmas</div>
+      <div class="page-sub">Cadastro das turmas da instituição.</div>
+      <div class="section-box">
+        <div class="section-head">
+          <h2>Lista de Turmas</h2>
+          <button class="btn btn-primary btn-sm" onclick="openNewTurma()">＋ Nova Turma</button>
+        </div>
+        <div class="section-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>ID</th><th>Nome</th><th>Qtd. Alunos</th><th>Ações</th></tr></thead>
+              <tbody id="tb-turmas"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SALAS -->
+    <div class="page" id="salas">
+      <div class="page-title">Salas</div>
+      <div class="page-sub">Cadastro das salas e laboratórios.</div>
+      <div class="section-box">
+        <div class="section-head">
+          <h2>Lista de Salas</h2>
+          <button class="btn btn-primary btn-sm" onclick="openNewSala()">＋ Nova Sala</button>
+        </div>
+        <div class="section-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>ID</th><th>Nome</th><th>Capacidade</th><th>Tipo</th><th>Ações</th></tr></thead>
+              <tbody id="tb-salas"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HORÁRIOS INSTITUCIONAIS -->
+    <div class="page" id="horarios">
+      <div class="page-title">Horários Institucionais</div>
+      <div class="page-sub">Slots de horários disponíveis para alocação de aulas.</div>
+      <div class="section-box">
+        <div class="section-head">
+          <h2>Slots de Horário</h2>
+          <button class="btn btn-primary btn-sm" onclick="openNewHorario()">＋ Novo Slot</button>
+        </div>
+        <div class="section-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>ID</th><th>Turno</th><th>Dia</th><th>Início</th><th>Fim</th><th>Ações</th></tr></thead>
+              <tbody id="tb-horarios"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALTERAR SENHA -->
+    <div class="page" id="senha">
+      <div class="page-title">Alterar Senha</div>
+      <div class="page-sub">Atualize sua senha de acesso ao sistema.</div>
+      <div class="section-box" style="max-width:440px">
+        <div class="section-head"><h2>Nova Senha</h2></div>
+        <div class="section-body">
+          <div class="form-field" style="margin-bottom:16px">
+            <label>Senha Atual</label>
+            <input type="password" id="senha-atual" placeholder="Digite a senha atual">
+          </div>
+          <div class="form-field" style="margin-bottom:20px">
+            <label>Nova Senha</label>
+            <input type="password" id="senha-nova" placeholder="Mínimo 6 caracteres">
+          </div>
+          <button class="btn btn-primary" onclick="salvarSenha()">🔒 Alterar Senha</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ══════════ MODAIS ══════════ -->
+
+<!-- Modal: Professor -->
+<div class="modal-overlay" id="modal-prof">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modal-prof-title">Professor</h3>
+      <button class="modal-close" onclick="closeModal('modal-prof')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-field">
+          <label>Nome completo *</label>
+          <input type="text" id="prof-nome" placeholder="Ex: Carlos Souza">
+        </div>
+        <div class="form-field">
+          <label>E-mail *</label>
+          <input type="email" id="prof-email" placeholder="prof@escola.com">
+        </div>
+        <div class="form-field">
+          <label>Máx. aulas por dia</label>
+          <input type="number" id="prof-max" min="1" max="8" value="4">
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <label style="font-size:12px;font-weight:600;color:#6b7a99;display:block;margin-bottom:8px">Dias Disponíveis</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <label style="display:flex;align-items:center;gap:4px;font-size:13px;cursor:pointer"><input type="checkbox" class="dia-check" value="Segunda"> Segunda</label>
+          <label style="display:flex;align-items:center;gap:4px;font-size:13px;cursor:pointer"><input type="checkbox" class="dia-check" value="Terca"> Terça</label>
+          <label style="display:flex;align-items:center;gap:4px;font-size:13px;cursor:pointer"><input type="checkbox" class="dia-check" value="Quarta"> Quarta</label>
+          <label style="display:flex;align-items:center;gap:4px;font-size:13px;cursor:pointer"><input type="checkbox" class="dia-check" value="Quinta"> Quinta</label>
+          <label style="display:flex;align-items:center;gap:4px;font-size:13px;cursor:pointer"><input type="checkbox" class="dia-check" value="Sexta"> Sexta</label>
+          <label style="display:flex;align-items:center;gap:4px;font-size:13px;cursor:pointer"><input type="checkbox" class="dia-check" value="Sabado"> Sábado</label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-prof')">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveProf()">💾 Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Disciplina -->
+<div class="modal-overlay" id="modal-disc">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modal-disc-title">Disciplina</h3>
+      <button class="modal-close" onclick="closeModal('modal-disc')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-field">
+          <label>Nome da disciplina *</label>
+          <input type="text" id="disc-nome" placeholder="Ex: Matemática">
+        </div>
+        <div class="form-field">
+          <label>Carga horária semanal (h-aula)</label>
+          <input type="number" id="disc-carga" min="1" max="20" value="2">
+        </div>
+        <div class="form-field" style="grid-column:1/-1">
+          <label>Professor responsável</label>
+          <select id="disc-prof"></select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-disc')">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveDisc()">💾 Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Turma -->
+<div class="modal-overlay" id="modal-turma">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modal-turma-title">Turma</h3>
+      <button class="modal-close" onclick="closeModal('modal-turma')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-field">
+          <label>Nome da turma *</label>
+          <input type="text" id="turma-nome" placeholder="Ex: 3 EM A">
+        </div>
+        <div class="form-field">
+          <label>Quantidade de alunos</label>
+          <input type="number" id="turma-alunos" min="0" placeholder="Ex: 35">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-turma')">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveTurma()">💾 Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Sala -->
+<div class="modal-overlay" id="modal-sala">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modal-sala-title">Sala</h3>
+      <button class="modal-close" onclick="closeModal('modal-sala')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-field">
+          <label>Nome da sala *</label>
+          <input type="text" id="sala-nome" placeholder="Ex: Sala 01">
+        </div>
+        <div class="form-field">
+          <label>Capacidade *</label>
+          <input type="number" id="sala-cap" min="1" value="40">
+        </div>
+        <div class="form-field" style="grid-column:1/-1">
+          <label>Tipo</label>
+          <select id="sala-tipo">
+            <option>Sala de Aula</option>
+            <option>Laboratorio</option>
+            <option>Auditorio</option>
+            <option>Quadra</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-sala')">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveSala()">💾 Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Horário -->
+<div class="modal-overlay" id="modal-horario">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Novo Slot de Horário</h3>
+      <button class="modal-close" onclick="closeModal('modal-horario')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-field">
+          <label>Turno</label>
+          <select id="hor-turno">
+            <option value="Manha">Manhã</option>
+            <option value="Noite">Noite</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Dia da Semana</label>
+          <select id="hor-dia">
+            <option>Segunda</option><option>Terca</option><option>Quarta</option>
+            <option>Quinta</option><option>Sexta</option><option>Sabado</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Horário de Início</label>
+          <input type="time" id="hor-inicio" value="07:00">
+        </div>
+        <div class="form-field">
+          <label>Horário de Fim</label>
+          <input type="time" id="hor-fim" value="07:50">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-horario')">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveHorario()">💾 Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Aula -->
+<div class="modal-overlay" id="modal-aula">
+  <div class="modal" style="max-width:560px">
+    <div class="modal-head">
+      <h3 id="modal-aula-title">Nova Aula</h3>
+      <button class="modal-close" onclick="closeModal('modal-aula')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="aula-conflitos" class="conflict-alert" style="display:none"></div>
+      <div class="form-grid">
+        <div class="form-field">
+          <label>Professor *</label>
+          <select id="aula-prof" onchange="checkConflito()"></select>
+        </div>
+        <div class="form-field">
+          <label>Turma *</label>
+          <select id="aula-turma" onchange="checkConflito()"></select>
+        </div>
+        <div class="form-field">
+          <label>Disciplina *</label>
+          <select id="aula-disc"></select>
+        </div>
+        <div class="form-field">
+          <label>Sala *</label>
+          <select id="aula-sala" onchange="checkConflito()"></select>
+        </div>
+        <div class="form-field" style="grid-column:1/-1">
+          <label>Horário *</label>
+          <select id="aula-horario" onchange="checkConflito()"></select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modal-aula')">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveAula()">💾 Salvar Aula</button>
+    </div>
+  </div>
+</div>
+
+<script src="/static/js/app.js"></script>
+<script>
+  // Inject user info from server
+  const _user = {{ user | tojson }};
+  document.getElementById("user-name").textContent    = _user.nome || "Usuário";
+  document.getElementById("user-perfil").textContent  = _user.perfil || "";
+  document.getElementById("user-initial").textContent = (_user.nome||"U")[0].toUpperCase();
+</script>
+</body>
+</html>
