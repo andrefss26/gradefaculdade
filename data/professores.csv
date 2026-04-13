@@ -1,0 +1,7 @@
+id,nome,email,dias_disponiveis,max_aulas_dia,id_turma
+1,Carlos Souza,carlos@escola.com,"Segunda,Terca,Quarta,Quinta,Sexta",5,
+2,Ana Lima,ana@escola.com,"Segunda,Terca,Quinta,Sexta",5,
+3,Roberto Nunes,roberto@escola.com,"Segunda,Quarta,Sexta",5,
+4,Marina Costa,marina@escola.com,"Segunda,Terca,Quarta,Quinta,Sexta",5,
+5,Felipe Santos,felipe@escola.com,"Segunda,Terca,Quarta,Quinta,Sexta",5,
+6,Juliana Oliveira,juliana@escola.com,"Segunda,Terca,Quarta,Quinta,Sexta",5,

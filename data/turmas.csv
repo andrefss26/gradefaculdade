@@ -1,0 +1,17 @@
+id,nome,quantidade_alunos,id_curso
+1,Turma A 1º Semestre,35,1
+2,Turma A 2º Semestre,34,1
+3,Turma A 3º Semestre,32,1
+4,Turma A 4º Semestre,30,1
+5,Turma B 1º Semestre,36,2
+6,Turma B 2º Semestre,35,2
+7,Turma B 3º Semestre,33,2
+8,Turma B 4º Semestre,31,2
+9,Turma C 1º Semestre,38,3
+10,Turma C 2º Semestre,37,3
+11,Turma C 3º Semestre,35,3
+12,Turma C 4º Semestre,32,3
+13,Turma D 1º Semestre,28,4
+14,Turma D 2º Semestre,27,4
+15,Turma D 3º Semestre,26,4
+16,Turma D 4º Semestre,25,4
