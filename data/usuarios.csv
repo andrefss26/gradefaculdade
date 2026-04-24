@@ -1,0 +1,5 @@
+id,nome,email,senha,perfil,id_vinculo
+1,Administrador,admin@escola.com,admin123,admin,
+2,Carlos Souza,carlos@escola.com,carlos123,professor,1
+3,Coordenador,coord@escola.com,coord123,coordenador,
+4,Ana Lima,ana@escola.com,ana123,professor,2

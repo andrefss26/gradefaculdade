@@ -1,0 +1,11 @@
+id,nome,capacidade,tipo
+1,Sala 101,40,Sala de Aula
+2,Sala 102,40,Sala de Aula
+3,Sala 103,40,Sala de Aula
+4,Sala 104,40,Sala de Aula
+5,Sala 201,40,Sala de Aula
+6,Sala 202,40,Sala de Aula
+7,Lab. Informática A,35,Laboratorio
+8,Lab. Informática B,35,Laboratorio
+9,Lab. Segurança,30,Laboratorio
+10,Auditório,80,Auditorio

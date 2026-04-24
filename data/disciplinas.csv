@@ -1,0 +1,21 @@
+id,nome,carga_horaria,duracao_blocos,id_professor,id_curso
+1,Fundamentos de SQL,4,1,1,1
+2,Banco de Dados NoSQL,4,1,2,1
+3,Modelagem de Dados,4,1,3,1
+4,Administração de BD,4,1,4,1
+5,Data Warehouse,4,1,5,1
+6,Análise de Sistemas,4,1,6,2
+7,Engenharia de Software,4,1,7,2
+8,Gestão de TI,4,1,8,2
+9,Sistemas Distribuídos,4,1,9,2
+10,Arquitetura de Software,4,1,10,2
+11,Desenvolvimento Web,4,1,11,3
+12,Programação Mobile,4,1,12,3
+13,Estrutura de Dados,4,1,13,3
+14,Algoritmos Avançados,4,1,14,3
+15,DevOps e Cloud,4,1,15,3
+16,Criptografia,4,1,16,4
+17,Segurança de Redes,4,1,17,4
+18,Forense Digital,4,1,18,4
+19,Ethical Hacking,4,1,19,4
+20,Gestão de Riscos,4,1,20,4

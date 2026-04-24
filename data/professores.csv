@@ -1,0 +1,21 @@
+id,nome,email,dias_disponiveis,max_aulas_dia
+1,Carlos Souza,carlos@escola.com,"Segunda,Terca,Quarta",6
+2,Ana Lima,ana@escola.com,"Segunda,Terca,Quinta,Sexta",6
+3,Roberto Nunes,roberto@escola.com,"Segunda,Quarta,Quinta,Sexta",6
+4,Marina Costa,marina@escola.com,"Segunda,Terca,Quarta,Sexta",6
+5,Felipe Santos,felipe@escola.com,"Terca,Quarta,Quinta,Sexta",6
+6,Juliana Oliveira,juliana@escola.com,"Segunda,Terca,Quarta,Quinta",6
+7,Pedro Alves,pedro@escola.com,"Segunda,Terca,Quarta,Quinta,Sexta",6
+8,Lucia Fernandes,lucia@escola.com,"Segunda,Quarta,Quinta,Sexta",6
+9,Rafael Moreira,rafael@escola.com,"Terca,Quarta,Quinta,Sexta",6
+10,Beatriz Santos,beatriz@escola.com,"Segunda,Terca,Quarta,Quinta",6
+11,Diego Lima,diego@escola.com,"Segunda,Terca,Quinta,Sexta",6
+12,Carla Mendes,carla@escola.com,"Segunda,Quarta,Quinta,Sexta",6
+13,Marcos Ribeiro,marcos@escola.com,"Segunda,Terca,Quarta,Sexta",6
+14,Sofia Castro,sofia@escola.com,"Terca,Quarta,Quinta,Sexta",6
+15,André Sousa,andre@escola.com,"Segunda,Terca,Quarta,Quinta",6
+16,Vanessa Cruz,vanessa@escola.com,"Segunda,Terca,Quinta,Sexta",6
+17,Thiago Barbosa,thiago@escola.com,"Segunda,Quarta,Quinta,Sexta",6
+18,Fernanda Rocha,fernanda@escola.com,"Segunda,Terca,Quarta,Sexta",6
+19,Gustavo Pinto,gustavo@escola.com,"Terca,Quarta,Quinta,Sexta",6
+20,Isabela Gomes,isabela@escola.com,"Segunda,Terca,Quarta,Quinta",6
