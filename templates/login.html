@@ -1,104 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Login — GradeEscolar</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #1B3F7A 0%, #2E6DB4 60%, #4A90D9 100%);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .card {
-    background: #fff;
-    border-radius: 16px;
-    padding: 48px 40px;
-    width: 100%;
-    max-width: 420px;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.25);
-  }
-  .logo {
-    text-align: center;
-    margin-bottom: 32px;
-  }
-  .logo-icon {
-    width: 64px; height: 64px;
-    background: linear-gradient(135deg, #1B3F7A, #2E6DB4);
-    border-radius: 16px;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 28px; margin-bottom: 12px;
-  }
-  .logo h1 { font-size: 22px; color: #1B3F7A; font-weight: 700; }
-  .logo p  { font-size: 13px; color: #888; margin-top: 4px; }
-
-  label { display: block; font-size: 13px; font-weight: 600; color: #444; margin-bottom: 6px; }
-  input[type=email], input[type=password] {
-    width: 100%; padding: 12px 14px; border: 1.5px solid #ddd;
-    border-radius: 8px; font-size: 14px; transition: border .2s;
-    outline: none;
-  }
-  input:focus { border-color: #2E6DB4; }
-  .field { margin-bottom: 20px; }
-  .btn {
-    width: 100%; padding: 13px; background: linear-gradient(135deg, #1B3F7A, #2E6DB4);
-    color: #fff; border: none; border-radius: 8px; font-size: 15px;
-    font-weight: 600; cursor: pointer; transition: opacity .2s;
-  }
-  .btn:hover { opacity: .9; }
-  .error { background: #fff0f0; color: #c0392b; border: 1px solid #f5c6c6;
-    padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 16px; display: none; }
-  .demo { margin-top: 24px; padding: 14px; background: #f0f5ff; border-radius: 8px;
-    font-size: 12px; color: #555; line-height: 1.7; }
-  .demo strong { color: #1B3F7A; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter','Segoe UI',system-ui,sans-serif;min-height:100vh;
+  background:linear-gradient(135deg,#1E293B 0%,#3B5BDB 60%,#7C3AED 100%);
+  display:flex;align-items:center;justify-content:center;}
+.card{background:#fff;border-radius:20px;padding:48px 44px;width:100%;max-width:420px;
+  box-shadow:0 32px 80px rgba(0,0,0,.3);}
+.logo{text-align:center;margin-bottom:36px}
+.logo-icon{width:68px;height:68px;background:linear-gradient(135deg,#3B5BDB,#7C3AED);
+  border-radius:18px;display:inline-flex;align-items:center;justify-content:center;
+  font-size:30px;margin-bottom:14px;}
+.logo h1{font-size:22px;font-weight:800;color:#1E293B}
+.logo p{font-size:12px;color:#64748B;margin-top:4px}
+.logo .courses{display:flex;gap:6px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+.course-tag{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
+.ct1{background:#EEF2FF;color:#3B5BDB}.ct2{background:#F5F3FF;color:#7C3AED}
+.ct3{background:#ECFDF5;color:#059669}.ct4{background:#FFF7ED;color:#D97706}
+label{display:block;font-size:12px;font-weight:600;color:#64748B;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+input{width:100%;padding:12px 14px;border:1.5px solid #E2E8F0;border-radius:10px;
+  font-size:14px;outline:none;transition:border .2s;color:#1E293B}
+input:focus{border-color:#3B5BDB}
+.field{margin-bottom:18px}
+.btn{width:100%;padding:13px;background:linear-gradient(135deg,#3B5BDB,#7C3AED);
+  color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;
+  cursor:pointer;transition:opacity .2s;margin-top:4px}
+.btn:hover{opacity:.9}
+.err{background:#FEF2F2;color:#B91C1C;border:1px solid #FECACA;padding:10px 14px;
+  border-radius:8px;font-size:13px;margin-bottom:14px;display:none}
+.demo{margin-top:22px;padding:14px;background:#F8FAFC;border-radius:10px;
+  font-size:12px;color:#64748B;line-height:1.8}
+.demo strong{color:#3B5BDB}
 </style>
 </head>
 <body>
 <div class="card">
   <div class="logo">
-    <div class="logo-icon">📅</div>
+    <div class="logo-icon">🎓</div>
     <h1>GradeEscolar</h1>
-    <p>Sistema de Gerenciamento de Horários</p>
+    <p>Faculdade de Tecnologia — Sistema de Horários</p>
+    <div class="courses">
+      <span class="course-tag ct1">ADS</span>
+      <span class="course-tag ct2">SI</span>
+      <span class="course-tag ct3">Cibersegurança</span>
+      <span class="course-tag ct4">Banco de Dados</span>
+    </div>
   </div>
-  <div class="error" id="errMsg"></div>
-  <div class="field">
-    <label>E-mail</label>
-    <input type="email" id="email" placeholder="usuario@escola.com" value="admin@escola.com">
-  </div>
-  <div class="field">
-    <label>Senha</label>
-    <input type="password" id="senha" placeholder="Sua senha" value="admin123">
-  </div>
-  <button class="btn" onclick="login()">Entrar</button>
+  <div class="err" id="err"></div>
+  <div class="field"><label>E-mail</label>
+    <input type="email" id="email" value="admin@faculdade.com" autocomplete="username"></div>
+  <div class="field"><label>Senha</label>
+    <input type="password" id="senha" value="admin123" autocomplete="current-password"></div>
+  <button class="btn" onclick="doLogin()">Entrar no Sistema</button>
   <div class="demo">
     <strong>Acessos de demonstração:</strong><br>
-    ADM: admin@escola.com / admin123<br>
-    Prof: carlos@escola.com / carlos123<br>
-    Coord: coord@escola.com / coord123
+    ADM: admin@faculdade.com / admin123<br>
+    Prof: carlos@faculdade.com / prof123<br>
+    Coord: coord@faculdade.com / coord123
   </div>
 </div>
 <script>
-async function login() {
-  const email = document.getElementById('email').value;
-  const senha = document.getElementById('senha').value;
-  const err   = document.getElementById('errMsg');
-  err.style.display = 'none';
-  const r = await fetch('/api/login', {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({email, senha})
-  });
-  if (r.ok) { window.location = '/dashboard'; }
-  else {
-    err.textContent = 'E-mail ou senha incorretos.';
-    err.style.display = 'block';
-  }
+async function doLogin(){
+  const email=document.getElementById('email').value;
+  const senha=document.getElementById('senha').value;
+  const err=document.getElementById('err');
+  err.style.display='none';
+  const r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,senha})});
+  if(r.ok){window.location='/dashboard';}
+  else{err.textContent='E-mail ou senha incorretos.';err.style.display='block';}
 }
-document.addEventListener('keydown', e => { if(e.key==='Enter') login(); });
+document.addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
 </script>
 </body>
 </html>

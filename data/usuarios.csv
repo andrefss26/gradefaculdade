@@ -1,4 +1,4 @@
 id,nome,email,senha,perfil
-1,Administrador,admin@escola.com,admin123,adm
-2,Carlos Souza,carlos@escola.com,carlos123,professor
-3,Coord. Maria,coord@escola.com,coord123,coordenador
+1,Administrador,admin@faculdade.com,admin123,adm
+2,Prof. Carlos Souza,carlos@faculdade.com,prof123,professor
+3,Coord. Ana Lima,coord@faculdade.com,coord123,coordenador

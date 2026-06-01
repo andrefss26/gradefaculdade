@@ -1,5 +1,33 @@
-id,nome,carga_horaria,id_professor
-1,Matematica,4,1
-2,Portugues,4,2
-3,Fisica,3,3
-4,Historia,2,2
+id,curso,semestre,nome,carga_horaria,id_professor
+1,ADS,1,Algoritmos e Lógica,2,1
+2,ADS,1,Fundamentos de TI,2,2
+3,ADS,2,Estrutura de Dados,2,3
+4,ADS,2,Programação Web,2,4
+5,ADS,3,Engenharia de Software,2,5
+6,ADS,3,Banco de Dados I,2,6
+7,ADS,4,Arquitetura de Soft.,2,7
+8,ADS,4,Projeto Integrador,2,8
+9,SI,1,Redes de Computadores,2,2
+10,SI,1,Sistemas Operacionais,2,3
+11,SI,2,Gestão de TI,2,4
+12,SI,2,Auditoria de Sistemas,2,5
+13,SI,3,Governança de TI,2,6
+14,SI,3,Análise de Riscos,2,7
+15,SI,4,Inteligência de Negócios,2,8
+16,SI,4,TCC Orientado,2,9
+17,Ciberseguranca,1,Fundamentos de Segurança,2,3
+18,Ciberseguranca,1,Redes e Protocolos,2,4
+19,Ciberseguranca,2,Criptografia,2,5
+20,Ciberseguranca,2,Segurança de Redes,2,6
+21,Ciberseguranca,3,Ethical Hacking,2,7
+22,Ciberseguranca,3,Forense Digital,2,8
+23,Ciberseguranca,4,Pentest Avançado,2,9
+24,Ciberseguranca,4,Gestão de Incidentes,2,10
+25,Banco de Dados,1,Modelagem de Dados,2,4
+26,Banco de Dados,1,SQL Fundamental,2,5
+27,Banco de Dados,2,BD Relacional,2,6
+28,Banco de Dados,2,BD NoSQL,2,7
+29,Banco de Dados,3,Data Warehouse,2,8
+30,Banco de Dados,3,Business Intelligence,2,9
+31,Banco de Dados,4,Big Data,2,10
+32,Banco de Dados,4,Machine Learning p/ BD,2,11

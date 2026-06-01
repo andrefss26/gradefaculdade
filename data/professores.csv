@@ -1,4 +1,13 @@
-id,nome,email,dias_disponiveis,max_aulas_dia
-1,Carlos Souza,carlos@escola.com,"Segunda,Terca,Quarta,Quinta,Sexta",4
-2,Ana Lima,ana@escola.com,"Segunda,Terca,Quinta,Sexta",3
-3,Roberto Nunes,roberto@escola.com,"Segunda,Quarta,Sexta",4
+id,nome,email,dias_disponiveis,max_aulas_dia,disciplinas_ids
+1,Carlos Souza,carlos@faculdade.com,"Segunda,Terca,Quarta,Quinta,Sexta",6,1
+2,Ana Lima,ana@faculdade.com,"Segunda,Terca,Quarta,Quinta,Sexta",6,"2,9"
+3,Roberto Nunes,roberto@faculdade.com,"Segunda,Terca,Quarta,Quinta,Sexta",6,"3,10,17"
+4,Patricia Melo,patricia@faculdade.com,"Segunda,Terca,Quarta,Quinta,Sexta",6,"4,11,18,25"
+5,Fernando Costa,fernando@faculdade.com,"Segunda,Terca,Quarta,Quinta,Sexta",6,"5,12,19,26"
+6,Juliana Ramos,juliana@faculdade.com,"Segunda,Terca,Quarta,Quinta,Sexta",6,"6,13,20,27"
+7,Diego Ferreira,diego@faculdade.com,"Segunda,Terca,Quarta,Quinta,Sexta",6,"7,14,21,28"
+8,Camila Pereira,camila@faculdade.com,"Segunda,Terca,Quarta,Quinta,Sexta",6,"8,15,22,29"
+9,Rafael Alves,rafael@faculdade.com,"Segunda,Terca,Quarta,Quinta,Sexta",6,"16,23,30"
+10,Larissa Monteiro,larissa@faculdade.com,"Segunda,Terca,Quarta,Quinta,Sexta",6,"24,31"
+11,Marcos Vinicius,marcos@faculdade.com,"Segunda,Terca,Quarta,Quinta,Sexta",6,32
+12,Beatriz Santos,beatriz@faculdade.com,"Segunda,Terca,Quarta,Quinta,Sexta",6,

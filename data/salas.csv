@@ -1,4 +1,18 @@
 id,nome,capacidade,tipo
 1,Sala 01,40,Sala de Aula
 2,Sala 02,40,Sala de Aula
-3,Lab. Informatica,30,Laboratorio
+3,Sala 03,40,Sala de Aula
+4,Sala 04,40,Sala de Aula
+5,Sala 05,40,Sala de Aula
+6,Sala 06,40,Sala de Aula
+7,Sala 07,40,Sala de Aula
+8,Sala 08,40,Sala de Aula
+9,Sala 09,40,Sala de Aula
+10,Sala 10,40,Sala de Aula
+11,Sala 11,40,Sala de Aula
+12,Sala 12,40,Sala de Aula
+13,Lab. Info 1,30,Laboratorio
+14,Lab. Info 2,30,Laboratorio
+15,Lab. Info 3,30,Laboratorio
+16,Lab. Info 4,30,Laboratorio
+17,Auditorio,120,Auditorio
